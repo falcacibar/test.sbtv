@@ -31,12 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
-    'django.contrib.auth',
+#    'django.contrib.admin',
+#    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+#    'django.contrib.staticfiles',
+    'sbtv.dictgen'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -77,10 +78,19 @@ WSGI_APPLICATION = 'sbtv.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': ':memory:',
+
     }
 }
 
+TEST_RUNNER = 'sbtv.testing.DatabaselessRunner'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'test-sbtv-dictgen'
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

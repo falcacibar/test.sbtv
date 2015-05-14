@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# vim: set fileencoding=utf-8 :
+
 import json
 
 from time import sleep

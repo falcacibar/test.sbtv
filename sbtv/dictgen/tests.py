@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# vim: set fileencoding=utf-8 :
+
 import json
 import iso8601
 import re

@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# vim: set fileencoding=utf-8 :
+
 from django.test import TestCase
 
 from sbtv.util.test import CommonViewTest

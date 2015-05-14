@@ -5,35 +5,21 @@ import re
 from datetime import datetime
 from django.test import TestCase
 
+from sbtv.util.test import CommonViewTest
+from sbtv.util.test import CommonJSONViewTest
+
 from .views import *
 
-class RequirementTest(TestCase):
+
+class RequirementTest(TestCase, CommonJSONViewTest, CommonViewTest):
+    JSONMustBe = dict
 
     def setUp(self):
         self.response = self.client.get('/')
         try:
-            self.dict_content = self.dict_content = json.loads(self.response.content.decode('utf-8'))
+            self.dict_content = json.loads(self.response.content.decode('utf-8'))
         except:
             self.dict_content = None
-
-    def test_url_ok(self):
-        self.assertEqual(
-            self.response.status_code, 200
-            , "The view have an error"
-        )
-
-    def test_type_is_json_dict(self):
-        self.assertEqual(
-            self.response['Content-Type']
-            , 'application/json'
-            , "The response don't have a JSON content type"
-        )
-        
-        self.assertIsInstance(
-            self.dict_content
-            , dict
-            , "The JSON response isn't a dict"
-        )
 
     def test_dict_key_datetime(self):
         self.assertTrue(
@@ -69,14 +55,14 @@ class RequirementTest(TestCase):
 
         if self.response['X-Cache'] == 'HIT':
             self.assertLess(
-                    exec_time
-                    , 2
-                    , 'With cache the time of load must be under 2 seconds'
+                exec_time
+                , 2
+                , 'With cache the time of load must be under 2 seconds'
             )
         else:
             self.assertGreaterEqual(
-                    exec_time
-                    , 2
-                    , 'Without cache the time of load must be under 2 seconds'
+                exec_time
+                , 2
+                , 'Without cache the time of load must be under 2 seconds'
             )
         

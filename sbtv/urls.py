@@ -7,5 +7,7 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'sbtv.dictgen.views.dictgen'),
+    url(r'^futbol/', 'sbtv.football.views.matches')
+    , url(r'^$', 'sbtv.dictgen.views.dictgen')
+    
 ]

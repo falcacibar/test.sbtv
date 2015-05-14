@@ -14,7 +14,6 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-print(BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
@@ -31,8 +30,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-#    'django.contrib.admin',
-#    'django.contrib.auth',
+    'django.contrib.admin',
+    'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -91,6 +90,9 @@ CACHES = {
         'LOCATION': 'test-sbtv-dictgen'
     }
 }
+
+fixture_matches_url = 'https://cmpsbtv.s3.amazonaws.com/matchs.xml'
+# fixture_matches_url = 'http://localhost/matchs.xml'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/

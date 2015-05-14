@@ -29,8 +29,6 @@ class MatchesHandler(xml.sax.handler.ContentHandler):
             if name == 'partido':
                 self.items.append(dict(attrs))
                 self.parsingMatch = True
-            # In this case doesn't have sense parse goleadores
-            # and will be ignored in the following if
             elif self.parsingMatch and name not in self.ignoreElements:
                 if name == 'estado' and attrs['id'] != '2':
                     self.parse = False
